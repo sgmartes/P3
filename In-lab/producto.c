@@ -43,25 +43,17 @@ void Product_Imprimir(Product* this){
 }
 
 void Product_Assign(Product* this, const Product* other){
-    *this = *other;
+    this->barcode=other->barcode;
+    strncpy(this->name,other->name,MAX);
+    this->price=other->price;
 }
 
 bool Product_IsEqual(const Product* this, const Product* other){
-    if (this->barcode==other->barcode && strcmp(this->name,other->name)==0 && this->price==other->price){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return(this->barcode==other->barcode && strcmp(this->name,other->name)==0 && this->price==other->price);
 }
 
 bool Product_IsEqual_ByBarcode(const Product* this, const Product* other){
-    if (this->barcode==other->barcode){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return(this->barcode==other->barcode);
 }
 
 int main(){
@@ -105,7 +97,7 @@ int main(){
         printf("SON IGUALES\n\n");
     }
     else{
-        printf("No son iguales :()");
+        printf("No son iguales :(\n\n");
     }
 
 }
